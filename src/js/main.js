@@ -9,11 +9,6 @@ window.onload = function(){
     }else{
         alert('Error');
     }
-
-
-
-
-
 }
 
 function guardar(){
@@ -34,6 +29,11 @@ function guardar(){
         "Edad": edad
     });
     
+    document.getElementById("name").value = "";
+    document.getElementById("apellido").value = "";
+    document.getElementById("ciudad").value = "";
+    document.getElementById("escuela").value = "";
+    document.getElementById("edad").value = "";
     console.log(datos);
 
     mostrarDatos(datos);
@@ -43,26 +43,32 @@ function guardar(){
 
 function mostrarDatos(datos){
 
-    let tabla = document.createElement("table");
-    let fila;
-    let columna;
+    let tabla = document.getElementById("tabla");
+    console.log(datos.length);
 
-    for(var i = 0; i < datos.length; i++){
-
+    let i =0;
         let fila = document.createElement("tr");
 
         let columna = document.createElement("td");
+        let columna2 = document.createElement("td");
+        let columna3 = document.createElement("td");
+        let columna4 = document.createElement("td");
+        let columna5 = document.createElement("td");
 
         
         columna.appendChild(document.createTextNode(datos[i].Nombre));
-        columna.appendChild(document.createTextNode(datos[i].Apellido));
-        columna.appendChild(document.createTextNode(datos[i].Ciudad));
-        columna.appendChild(document.createTextNode(datos[i].Escuela));
-        columna.appendChild(document.createTextNode(datos[i].Edad));
+        columna2.appendChild(document.createTextNode(datos[i].Apellido));
+        columna3.appendChild(document.createTextNode(datos[i].Ciudad));
+        columna4.appendChild(document.createTextNode(datos[i].Escuela));
+        columna5.appendChild(document.createTextNode(datos[i].Edad));
 
         fila.appendChild(columna);
+        fila.appendChild(columna2);
+        fila.appendChild(columna3);
+        fila.appendChild(columna4);
+        fila.appendChild(columna5);
         tabla.appendChild(fila);
-    }
+    
     
     document.body.appendChild(tabla);
 }
