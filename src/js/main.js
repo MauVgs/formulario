@@ -1,6 +1,6 @@
 window.onload = function(){
 
-    let datos = new this.Array();
+    
     
     let btm = document.getElementById("btnGuardar");
 
@@ -10,49 +10,59 @@ window.onload = function(){
         alert('Error');
     }
 
-    function guardar(){
 
-        let nombre = document.getElementById("name").value;
-        let apellido = document.getElementById("apellido").value;
-        let ciudad = document.getElementById("ciudad").value;
-        let escuela = document.getElementById("escuela").value;
-        let edad = document.getElementById("edad").value;
 
-        datos.push({
-            "Nombre": nombre,
-            "Apellido": apellido,
-            "Ciudad": ciudad,
-            "Escuela": escuela,
-            "Edad": edad
-        });
+
+
+}
+
+function guardar(){
+
+    let datos = new Array();
+
+    let nombre = document.getElementById("name").value;
+    let apellido = document.getElementById("apellido").value;
+    let ciudad = document.getElementById("ciudad").value;
+    let escuela = document.getElementById("escuela").value;
+    let edad = document.getElementById("edad").value;
+
+    datos.push({
+        "Nombre": nombre,
+        "Apellido": apellido,
+        "Ciudad": ciudad,
+        "Escuela": escuela,
+        "Edad": edad
+    });
+    
+    console.log(datos);
+
+    mostrarDatos(datos);
+
+}
+
+
+function mostrarDatos(datos){
+
+    let tabla = document.createElement("table");
+    let fila;
+    let columna;
+
+    for(var i = 0; i < datos.length; i++){
+
+        let fila = document.createElement("tr");
+
+        let columna = document.createElement("td");
+
         
-        
-        mostrarDatos();
+        columna.appendChild(document.createTextNode(datos[i].Nombre));
+        columna.appendChild(document.createTextNode(datos[i].Apellido));
+        columna.appendChild(document.createTextNode(datos[i].Ciudad));
+        columna.appendChild(document.createTextNode(datos[i].Escuela));
+        columna.appendChild(document.createTextNode(datos[i].Edad));
 
+        fila.appendChild(columna);
+        tabla.appendChild(fila);
     }
-
-    function mostrarDatos(){
-
-        var fila;
-        var columna;
-        for(var i=0;i<datos.length;i++){
     
-            var fila=document.createElement("tr");
-    
-            var columna=document.createElement("td");
-    
-            columna.appendChild(document.createTextNode(datos[i].Nombre));
-            columna.appendChild(document.createTextNode(datos[i].Apellido));
-            columna.appendChild(document.createTextNode(datos[i].Ciudad));
-            columna.appendChild(document.createTextNode(datos[i].Escuela));
-            columna.appendChild(document.createTextNode(datos[i].Edad));
-    
-            fila.appendChild(columna)
-    
-        }
-    
-        document.body.table.appendChild(fila);
-            
-        }
-
+    document.body.appendChild(tabla);
 }
